@@ -1,26 +1,224 @@
 @import "tailwindcss";
 
+/* ================================
+   NARU HOUSE - DESIGN SYSTEM
+================================ */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fffaf1;
+  --foreground: #392719;
+
+  --primary: #49301f;
+  --secondary: #c58a35;
+  --accent: #e8c58a;
+
+  --cream: #f7eddd;
+  --muted: #8c7c6b;
+
+  --white: #ffffff;
+  --border: #eee3d3;
+
+  --success: #3c7650;
+
+  --font-heading: var(--font-geist);
+  --font-body: var(--font-geist);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* Container */
+
+.container {
+  width: min(100% - 32px, 1200px);
+  margin-inline: auto;
+}
+
+/* Section spacing */
+
+.section-padding {
+  padding-block: 64px;
+}
+
+/* Typography */
+
+.section-title {
+  font-size: clamp(28px, 5vw, 44px);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--primary);
+  letter-spacing: -1px;
+}
+
+.section-description {
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--muted);
+}
+
+/* Buttons */
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 12px 24px;
+  border-radius: 999px;
+  background: var(--primary);
+  color: var(--white);
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: var(--secondary);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 12px 24px;
+  border: 1px solid var(--primary);
+  border-radius: 999px;
+  color: var(--primary);
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background: var(--primary);
+  color: var(--white);
+}
+
+/* Product cards */
+
+.product-card {
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: var(--white);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 35px rgba(57, 39, 25, 0.08);
+}
+
+/* Image */
+
+.image-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Selection */
+
+::selection {
+  background: var(--accent);
+  color: var(--primary);
+}
+
+/* Scrollbar */
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 20px;
+}
+
+/* Tablet */
+
+@media (min-width: 640px) {
+  .container {
+    width: min(100% - 48px, 1200px);
+  }
+
+  .section-padding {
+    padding-block: 80px;
+  }
+}
+
+/* Desktop */
+
+@media (min-width: 1024px) {
+  .section-padding {
+    padding-block: 100px;
+  }
+}
+
+/* Small mobile */
+
+@media (max-width: 375px) {
+  .container {
+    width: calc(100% - 24px);
+  }
+
+  .section-padding {
+    padding-block: 48px;
+  }
+}
+
+/* Reduced motion accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }
